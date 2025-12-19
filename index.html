@@ -2,162 +2,668 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CRP | Construction & Remodeling Professionals</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CRP Construction & Remodeling Professionals</title>
 
-  <!-- SEO -->
-  <meta name="description" content="Licensed, bonded, and insured California construction professionals specializing in residential and commercial projects."/>
-  <meta name="robots" content="index, follow"/>
+  <!-- Primary SEO -->
+  <meta name="description" content="CRP Construction & Remodeling Professionals serving Southern California. New construction, remodeling, ADUs, framing, painting, demolition, cleanup, and more. Call (323) 334-8705 for a free estimate." />
+  <meta name="robots" content="index,follow" />
 
-  <!-- Local Contractor Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "GeneralContractor",
-    "name": "CRP Construction & Remodeling Professionals",
-    "areaServed": "California",
-    "telephone": "+13233348705",
-    "email": "CRPinCalifornia@gmail.com",
-    "url": "https://yourdomain.com",
-    "priceRange": "$$",
-    "hasCredential": "California Licensed Contractor",
-    "sameAs": []
-  }
-  </script>
+  <!-- Open Graph -->
+  <meta property="og:title" content="CRP Construction & Remodeling Professionals" />
+  <meta property="og:description" content="Residential & commercial construction and remodeling across Southern California. Large & small projects." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://YOUR-DOMAIN.com/" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=60" />
 
-  <!-- Tailwind -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
   <style>
-    body { font-family: Inter, sans-serif; background:#111827; }
-    html { scroll-behavior:smooth; }
-
-    .text-crp-rosegold { color:#C29292; }
-    .bg-crp-rosegold { background:#C29292; }
-    .bg-crp-rosegold-hover:hover { background:#A37878; }
-
-    .card-shadow { box-shadow:0 6px 16px rgba(255,255,255,.05); }
-    .subtle-pattern {
-      background:#1F2937;
-      background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 1px,transparent 6px);
+    :root{
+      --crp-gold:#C29292;           /* dusty rose-gold */
+      --crp-gold-hover:#A37878;
+      --crp-bg:#111827;
+      --crp-bg-2:#0b1220;
+      --crp-card:#1F2937;
+      --crp-border:#374151;
+      --crp-text:#E5E7EB;
+      --crp-muted:#9CA3AF;
     }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:var(--crp-bg);color:var(--crp-text)}
+    .text-crp{color:var(--crp-gold)}
+    .bg-crp{background:var(--crp-gold)}
+    .bg-crp-hover:hover{background:var(--crp-gold-hover)}
+    .card-shadow{box-shadow:0 10px 25px rgba(0,0,0,.35)}
+    .subtle-pattern{
+      background-color:#0f172a;
+      background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.03) 0,
+        rgba(255,255,255,0.03) 1px,
+        transparent 1px,
+        transparent 6px
+      );
+    }
+    .focus-ring:focus{outline:none;box-shadow:0 0 0 3px rgba(194,146,146,.35)}
+    .swiper-button-next,.swiper-button-prev{color:var(--crp-gold);}
+    .swiper-pagination-bullet-active{background:var(--crp-gold);}
+
+    /* Before/After handle visuals */
+    .handle{left:50%;}
+    .handle-circle{left:50%;}
   </style>
+
+  <!-- LocalBusiness JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"GeneralContractor",
+    "name":"CRP Construction & Remodeling Professionals",
+    "areaServed":"Southern California",
+    "telephone":"+1-323-334-8705",
+    "email":"CRPinCalifornia@gmail.com",
+    "url":"https://YOUR-DOMAIN.com/",
+    "image":"https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=60"
+  }
+  </script>
 </head>
 
-<body class="text-gray-200">
+<body>
 
-<!-- NAV -->
-<nav class="sticky top-0 z-50 bg-gray-900 shadow-xl">
-  <div class="max-w-7xl mx-auto px-6 flex justify-between items-center h-16">
-    <span class="text-3xl font-extrabold text-crp-rosegold">CRP</span>
-    <div class="hidden md:flex gap-8">
-      <a href="#services">Services</a>
-      <a href="#process">Process</a>
-      <a href="#portfolio">Projects</a>
-      <a href="#contact" class="bg-crp-rosegold px-4 py-2 rounded-xl text-white">Estimate</a>
+  <!-- Sticky Top Bar -->
+  <div class="sticky top-0 z-50 bg-[#0b1220]/95 backdrop-blur border-b border-[var(--crp-border)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-16 flex items-center justify-between">
+        <a href="#hero" class="flex items-center gap-3">
+          <svg class="w-10 h-10 text-crp" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true">
+            <rect x="10" y="40" width="20" height="40"/>
+            <rect x="35" y="20" width="30" height="60"/>
+            <rect x="70" y="40" width="20" height="40"/>
+            <path d="M20 80 L50 60 L80 80" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <span class="text-3xl font-extrabold text-crp">CRP</span>
+            <span class="hidden sm:inline-block text-sm text-[var(--crp-muted)] ml-2">Construction & Remodeling Professionals</span>
+          </div>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#services" class="text-[var(--crp-muted)] hover:text-crp transition">Services</a>
+          <a href="#process" class="text-[var(--crp-muted)] hover:text-crp transition">Process</a>
+          <a href="#portfolio" class="text-[var(--crp-muted)] hover:text-crp transition">Gallery</a>
+          <a href="#faq" class="text-[var(--crp-muted)] hover:text-crp transition">FAQ</a>
+          <a href="#contact" class="px-4 py-2 rounded-xl bg-crp text-white font-semibold shadow bg-crp-hover transition">Free Estimate</a>
+        </nav>
+
+        <button id="mobileBtn" class="md:hidden p-2 rounded-lg text-[var(--crp-muted)] hover:text-crp hover:bg-white/5 transition" aria-label="Open menu">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"/>
+          </svg>
+        </button>
+      </div>
+
+      <div id="mobileMenu" class="hidden md:hidden pb-4">
+        <div class="grid gap-2">
+          <a href="#services" class="px-3 py-2 rounded-lg hover:bg-white/5">Services</a>
+          <a href="#process" class="px-3 py-2 rounded-lg hover:bg-white/5">Process</a>
+          <a href="#portfolio" class="px-3 py-2 rounded-lg hover:bg-white/5">Gallery</a>
+          <a href="#faq" class="px-3 py-2 rounded-lg hover:bg-white/5">FAQ</a>
+          <a href="#contact" class="px-3 py-2 rounded-lg bg-crp text-center font-semibold bg-crp-hover transition">Free Estimate</a>
+        </div>
+      </div>
     </div>
   </div>
-</nav>
 
-<!-- HERO -->
-<section class="relative py-32 bg-black text-center">
-  <img src="https://placehold.co/1600x900/1E1E1E/ffffff?text=Quality+Construction" class="absolute inset-0 w-full h-full object-cover opacity-50"/>
-  <div class="relative max-w-4xl mx-auto">
-    <h1 class="text-5xl font-bold">
-      Building the Future.<br>
-      <span class="text-crp-rosegold">Restoring the Past.</span>
-    </h1>
-    <p class="mt-6 text-xl text-gray-300">Licensed • Bonded • Insured • California</p>
-    <div class="mt-10 flex justify-center gap-6">
-      <a href="#contact" class="bg-crp-rosegold px-8 py-3 rounded-xl">Free Estimate</a>
-      <a href="tel:3233348705" class="border-2 border-white px-8 py-3 rounded-xl">(323) 334-8705</a>
+  <!-- HERO -->
+  <section id="hero" class="relative overflow-hidden">
+    <div class="absolute inset-0">
+      <!-- Replace with licensed/client image before launch -->
+      <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=60"
+           alt="Professional construction site"
+           class="w-full h-full object-cover opacity-45"
+           loading="eager" />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/55 via-black/55 to-[var(--crp-bg)]"></div>
     </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 pb-14 sm:pb-24">
+      <div class="max-w-3xl">
+        <p class="inline-flex items-center gap-2 text-sm text-[var(--crp-muted)] bg-white/5 border border-white/10 px-3 py-1 rounded-full">
+          <span class="w-2 h-2 rounded-full bg-crp"></span>
+          Residential & Commercial • Large & Small Projects • Southern California
+        </p>
+
+        <h1 class="mt-5 text-4xl sm:text-6xl font-extrabold leading-[1.05]">
+          Build it right.<br/>
+          <span class="text-crp">Finish it clean.</span>
+        </h1>
+
+        <p class="mt-5 text-lg sm:text-xl text-gray-200/90">
+          Full-service construction, remodeling, ADUs, framing, painting, demolition, cleanup, and project management.
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a href="#contact" class="inline-flex justify-center items-center px-7 py-3 rounded-xl bg-crp text-white font-semibold shadow-lg bg-crp-hover transition">
+            Request a Free Estimate
+          </a>
+          <a href="tel:3233348705" class="inline-flex justify-center items-center px-7 py-3 rounded-xl border border-white/30 hover:bg-white hover:text-black transition">
+            Call (323) 334-8705
+          </a>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-4">
+            <p class="text-sm text-[var(--crp-muted)]">Licensed</p>
+            <p class="font-semibold">CSLB # (Add Here)</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-4">
+            <p class="text-sm text-[var(--crp-muted)]">Insured</p>
+            <p class="font-semibold">General Liability / Workers Comp</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-4">
+            <p class="text-sm text-[var(--crp-muted)]">Warranty</p>
+            <p class="font-semibold">Workmanship Guarantee</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold">Our Services</h2>
+        <p class="mt-2 text-[var(--crp-muted)] max-w-2xl">
+          Residential & commercial projects across Southern California — from full builds to detailed finishes.
+        </p>
+      </div>
+      <a href="#contact" class="inline-flex items-center justify-center px-5 py-2.5 rounded-xl border border-white/15 hover:border-white/30 hover:bg-white/5 transition">
+        Get an Estimate
+      </a>
+    </div>
+
+    <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-[var(--crp-card)] border border-[var(--crp-border)] rounded-3xl p-7 card-shadow">
+        <h3 class="text-xl font-bold">New Construction & Remodeling</h3>
+        <p class="mt-2 text-[var(--crp-muted)]">Full-scope residential and commercial builds, remodels, repairs, and ADUs.</p>
+      </div>
+
+      <div class="bg-[var(--crp-card)] border border-[var(--crp-border)] rounded-3xl p-7 card-shadow">
+        <h3 class="text-xl font-bold">Framing & Finishes</h3>
+        <p class="mt-2 text-[var(--crp-muted)]">Wood & metal framing, trim & siding, sheetrock, tape & texture, tile, doors & windows.</p>
+      </div>
+
+      <div class="bg-[var(--crp-card)] border border-[var(--crp-border)] rounded-3xl p-7 card-shadow">
+        <h3 class="text-xl font-bold">Painting & Cleanup</h3>
+        <p class="mt-2 text-[var(--crp-muted)]">Interior & exterior painting, masonry, demolition & clean up, project management.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="subtle-pattern border-y border-[var(--crp-border)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <h2 class="text-3xl sm:text-4xl font-extrabold">Our Process</h2>
+      <p class="mt-2 text-[var(--crp-muted)] max-w-2xl">
+        Clear steps. No surprises. We keep communication simple and the job site organized.
+      </p>
+
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="bg-white/5 border border-white/10 rounded-3xl p-6">
+          <p class="text-crp font-extrabold text-2xl">1</p>
+          <h3 class="mt-2 font-bold text-lg">Consultation</h3>
+          <p class="mt-2 text-[var(--crp-muted)] text-sm">We review your goals, timeline, and budget—then recommend next steps.</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-3xl p-6">
+          <p class="text-crp font-extrabold text-2xl">2</p>
+          <h3 class="mt-2 font-bold text-lg">Estimate</h3>
+          <p class="mt-2 text-[var(--crp-muted)] text-sm">Clear written estimate and scope so expectations are aligned.</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-3xl p-6">
+          <p class="text-crp font-extrabold text-2xl">3</p>
+          <h3 class="mt-2 font-bold text-lg">Build</h3>
+          <p class="mt-2 text-[var(--crp-muted)] text-sm">Professional execution with clean workmanship and respect for your property.</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-3xl p-6">
+          <p class="text-crp font-extrabold text-2xl">4</p>
+          <h3 class="mt-2 font-bold text-lg">Final Walkthrough</h3>
+          <p class="mt-2 text-[var(--crp-muted)] text-sm">We confirm every detail and ensure full satisfaction before close-out.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold">Before & After Gallery</h2>
+        <p class="mt-2 text-[var(--crp-muted)] max-w-2xl">
+          Swipe through projects and drag the handle to see the transformation.
+        </p>
+      </div>
+      <a href="#contact" class="inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-crp text-white font-semibold bg-crp-hover transition">
+        Request a Quote
+      </a>
+    </div>
+
+    <div class="mt-10 relative">
+      <div class="swiper portfolioSwiper">
+        <div class="swiper-wrapper">
+
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <div class="rounded-3xl overflow-hidden border border-[var(--crp-border)] bg-[var(--crp-card)] card-shadow">
+              <div class="before-after-container relative w-full h-96 cursor-col-resize overflow-hidden">
+                <div class="after-layer absolute inset-0 w-full h-full">
+                  <img src="https://images.unsplash.com/photo-1523413452317-2f3c6a9f833a?auto=format&fit=crop&w=1200&q=60"
+                       alt="After modern kitchen remodel"
+                       class="w-full h-full object-cover"
+                       loading="lazy">
+                  <div class="absolute bottom-4 right-4 bg-crp/90 text-white px-4 py-2 rounded-lg font-bold text-lg shadow-lg">AFTER</div>
+                </div>
+
+                <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=1200&q=60"
+                     alt="Before dated kitchen"
+                     class="w-full h-full object-cover"
+                     loading="lazy">
+
+                <div class="absolute bottom-4 left-4 bg-black/70 text-white px-4 py-2 rounded-lg font-bold text-lg shadow-lg pointer-events-none">BEFORE</div>
+
+                <div class="handle absolute top-0 bottom-0 w-1 bg-crp cursor-col-resize"></div>
+                <div class="handle-circle absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-12 h-12 rounded-full border-4 border-crp bg-[var(--crp-bg)] shadow-lg flex items-center justify-center pointer-events-none">
+                  <svg class="w-6 h-6 text-crp rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold">Modern Kitchen Remodel</h3>
+                <p class="text-[var(--crp-muted)]">Southern California</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <div class="rounded-3xl overflow-hidden border border-[var(--crp-border)] bg-[var(--crp-card)] card-shadow">
+              <div class="before-after-container relative w-full h-96 cursor-col-resize overflow-hidden">
+                <div class="after-layer absolute inset-0 w-full h-full">
+                  <img src="https://images.unsplash.com/photo-1523755231516-e43fd2e8dca5?auto=format&fit=crop&w=1200&q=60"
+                       alt="After bathroom renovation"
+                       class="w-full h-full object-cover"
+                       loading="lazy">
+                  <div class="absolute bottom-4 right-4 bg-crp/90 text-white px-4 py-2 rounded-lg font-bold text-lg shadow-lg">AFTER</div>
+                </div>
+
+                <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=60"
+                     alt="Before outdated bathroom"
+                     class="w-full h-full object-cover"
+                     loading="lazy">
+
+                <div class="absolute bottom-4 left-4 bg-black/70 text-white px-4 py-2 rounded-lg font-bold text-lg shadow-lg pointer-events-none">BEFORE</div>
+
+                <div class="handle absolute top-0 bottom-0 w-1 bg-crp cursor-col-resize"></div>
+                <div class="handle-circle absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-12 h-12 rounded-full border-4 border-crp bg-[var(--crp-bg)] shadow-lg flex items-center justify-center pointer-events-none">
+                  <svg class="w-6 h-6 text-crp rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold">Bathroom Renovation</h3>
+                <p class="text-[var(--crp-muted)]">Southern California</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <div class="rounded-3xl overflow-hidden border border-[var(--crp-border)] bg-[var(--crp-card)] card-shadow">
+              <div class="before-after-container relative w-full h-96 cursor-col-resize overflow-hidden">
+                <div class="after-layer absolute inset-0 w-full h-full">
+                  <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=60"
+                       alt="After commercial build-out"
+                       class="w-full h-full object-cover"
+                       loading="lazy">
+                  <div class="absolute bottom-4 right-4 bg-crp/90 text-white px-4 py-2 rounded-lg font-bold text-lg shadow-lg">AFTER</div>
+                </div>
+
+                <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=60"
+                     alt="Before commercial space"
+                     class="w-full h-full object-cover"
+                     loading="lazy">
+
+                <div class="absolute bottom-4 left-4 bg-black/70 text-white px-4 py-2 rounded-lg font-bold text-lg shadow-lg pointer-events-none">BEFORE</div>
+
+                <div class="handle absolute top-0 bottom-0 w-1 bg-crp cursor-col-resize"></div>
+                <div class="handle-circle absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-12 h-12 rounded-full border-4 border-crp bg-[var(--crp-bg)] shadow-lg flex items-center justify-center pointer-events-none">
+                  <svg class="w-6 h-6 text-crp rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold">Commercial Build-Out</h3>
+                <p class="text-[var(--crp-muted)]">Southern California</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS + SERVICE AREA -->
+  <section class="subtle-pattern border-y border-[var(--crp-border)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+      <div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold">What Clients Say</h2>
+        <p class="mt-2 text-[var(--crp-muted)]">Real feedback from completed projects.</p>
+
+        <div class="mt-8 space-y-4">
+          <div class="bg-white/5 border border-white/10 rounded-3xl p-6">
+            <p class="text-sm text-gray-200/90">“Professional, on-time, and clean work. Highly recommend CRP for any remodel.”</p>
+            <p class="mt-3 text-sm text-[var(--crp-muted)]">— Homeowner, Los Angeles</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-3xl p-6">
+            <p class="text-sm text-gray-200/90">“Great communication and quality finishes on our commercial build-out.”</p>
+            <p class="mt-3 text-sm text-[var(--crp-muted)]">— Business Owner, Orange County</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold">Service Area</h2>
+        <p class="mt-2 text-[var(--crp-muted)]">We proudly serve Southern California and surrounding areas.</p>
+
+        <div class="mt-8 bg-white/5 border border-white/10 rounded-3xl p-6">
+          <ul class="grid grid-cols-2 gap-2 text-sm text-gray-200/90">
+            <li class="flex gap-2"><span class="text-crp">✓</span> Los Angeles</li>
+            <li class="flex gap-2"><span class="text-crp">✓</span> Orange County</li>
+            <li class="flex gap-2"><span class="text-crp">✓</span> San Diego</li>
+            <li class="flex gap-2"><span class="text-crp">✓</span> Riverside</li>
+            <li class="flex gap-2"><span class="text-crp">✓</span> San Bernardino</li>
+            <li class="flex gap-2"><span class="text-crp">✓</span> Surrounding Areas</li>
+          </ul>
+
+          <div class="mt-6 rounded-2xl overflow-hidden border border-white/10">
+            <!-- Replace with a licensed/owned map or remove for launch if not licensed -->
+            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1200&q=60"
+                 alt="Service area map placeholder"
+                 class="w-full h-64 object-cover"
+                 loading="lazy">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+    <h2 class="text-3xl sm:text-4xl font-extrabold">Frequently Asked Questions</h2>
+    <p class="mt-2 text-[var(--crp-muted)] max-w-2xl">Common questions from clients.</p>
+
+    <div class="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <details class="group bg-[var(--crp-card)] border border-[var(--crp-border)] rounded-3xl p-6">
+        <summary class="cursor-pointer list-none flex items-center justify-between font-bold">
+          Are you licensed and insured?
+          <span class="text-crp group-open:rotate-45 transition text-2xl leading-none">+</span>
+        </summary>
+        <p class="mt-3 text-sm text-[var(--crp-muted)]">Yes — fully licensed, bonded, and insured with general liability and workers comp.</p>
+      </details>
+
+      <details class="group bg-[var(--crp-card)] border border-[var(--crp-border)] rounded-3xl p-6">
+        <summary class="cursor-pointer list-none flex items-center justify-between font-bold">
+          Do you handle permits and ADUs?
+          <span class="text-crp group-open:rotate-45 transition text-2xl leading-none">+</span>
+        </summary>
+        <p class="mt-3 text-sm text-[var(--crp-muted)]">We coordinate required permits and can support ADU projects depending on scope and location requirements.</p>
+      </details>
+
+      <details class="group bg-[var(--crp-card)] border border-[var(--crp-border)] rounded-3xl p-6">
+        <summary class="cursor-pointer list-none flex items-center justify-between font-bold">
+          How long do projects take?
+          <span class="text-crp group-open:rotate-45 transition text-2xl leading-none">+</span>
+        </summary>
+        <p class="mt-3 text-sm text-[var(--crp-muted)]">Timelines vary by scope — we provide a schedule estimate during the quote phase.</p>
+      </details>
+
+      <details class="group bg-[var(--crp-card)] border border-[var(--crp-border)] rounded-3xl p-6">
+        <summary class="cursor-pointer list-none flex items-center justify-between font-bold">
+          Do you offer warranties?
+          <span class="text-crp group-open:rotate-45 transition text-2xl leading-none">+</span>
+        </summary>
+        <p class="mt-3 text-sm text-[var(--crp-muted)]">Yes — workmanship guarantee included. Specific terms vary by project type and scope.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="bg-[var(--crp-bg-2)] border-t border-[var(--crp-border)]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <div class="text-center">
+        <h2 class="text-3xl sm:text-4xl font-extrabold">Request a Free Estimate</h2>
+        <p class="mt-2 text-[var(--crp-muted)]">
+          Call (323) 334-8705 or submit the form — we’ll respond within 24–48 hours.
+        </p>
+      </div>
+
+      <div class="mt-10 bg-[var(--crp-card)] border border-[var(--crp-border)] rounded-3xl p-6 sm:p-10 card-shadow">
+        <!-- Netlify Form -->
+        <form name="estimate" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html" class="space-y-6">
+          <input type="hidden" name="form-name" value="estimate" />
+          <p class="hidden"><label>Don’t fill: <input name="bot-field" /></label></p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-semibold text-gray-200">Full Name</label>
+              <input name="name" required class="mt-2 w-full rounded-xl bg-black/25 border border-white/10 px-4 py-3 focus-ring" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-gray-200">Email</label>
+              <input type="email" name="email" required class="mt-2 w-full rounded-xl bg-black/25 border border-white/10 px-4 py-3 focus-ring" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-semibold text-gray-200">Phone</label>
+              <input type="tel" name="phone" required class="mt-2 w-full rounded-xl bg-black/25 border border-white/10 px-4 py-3 focus-ring" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-gray-200">Project Location (City/Zip)</label>
+              <input name="location" required class="mt-2 w-full rounded-xl bg-black/25 border border-white/10 px-4 py-3 focus-ring" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold text-gray-200">Type of Project</label>
+            <select name="projectType" required class="mt-2 w-full rounded-xl bg-black/25 border border-white/10 px-4 py-3 focus-ring">
+              <option value="" disabled selected>Select...</option>
+              <option>New Construction / Remodel</option>
+              <option>ADU</option>
+              <option>Framing / Finishes</option>
+              <option>Painting / Demolition</option>
+              <option>Commercial Build-Out</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold text-gray-200">Project Details</label>
+            <textarea name="details" rows="5" required class="mt-2 w-full rounded-xl bg-black/25 border border-white/10 px-4 py-3 focus-ring"></textarea>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+            <p class="text-xs text-[var(--crp-muted)]">By submitting, you agree to be contacted. No spam.</p>
+            <button class="inline-flex justify-center items-center px-7 py-3 rounded-xl bg-crp text-white font-semibold bg-crp-hover transition">
+              Submit Request
+            </button>
+          </div>
+        </form>
+
+        <div class="mt-6 text-center text-sm text-[var(--crp-muted)]">
+          Phone: <a class="text-crp hover:text-white font-semibold" href="tel:3233348705">(323) 334-8705</a> |
+          Email: <a class="text-crp hover:text-white font-semibold" href="mailto:CRPinCalifornia@gmail.com">CRPinCalifornia@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-[var(--crp-border)] bg-black/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+
+      <div>
+        <div class="flex items-center gap-3">
+          <svg class="w-8 h-8 text-crp" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true">
+            <rect x="10" y="40" width="20" height="40"/>
+            <rect x="35" y="20" width="30" height="60"/>
+            <rect x="70" y="40" width="20" height="40"/>
+            <path d="M20 80 L50 60 L80 80" stroke-linecap="round"/>
+          </svg>
+          <span class="text-2xl font-extrabold text-crp">CRP</span>
+        </div>
+        <p class="mt-2 text-sm text-[var(--crp-muted)]">Construction & Remodeling Professionals</p>
+        <p class="mt-4 text-sm text-[var(--crp-muted)]">Serving Southern California with professional workmanship.</p>
+      </div>
+
+      <div>
+        <h3 class="font-bold mb-3">Quick Links</h3>
+        <ul class="space-y-2 text-sm text-[var(--crp-muted)]">
+          <li><a class="hover:text-crp transition" href="#services">Services</a></li>
+          <li><a class="hover:text-crp transition" href="#process">Process</a></li>
+          <li><a class="hover:text-crp transition" href="#portfolio">Gallery</a></li>
+          <li><a class="hover:text-crp transition" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-bold mb-3">Contact</h3>
+        <p class="text-sm text-[var(--crp-muted)]">Phone</p>
+        <a class="text-crp font-semibold hover:text-white transition" href="tel:3233348705">(323) 334-8705</a>
+        <p class="mt-3 text-sm text-[var(--crp-muted)]">Email</p>
+        <a class="text-crp font-semibold hover:text-white transition" href="mailto:CRPinCalifornia@gmail.com">CRPinCalifornia@gmail.com</a>
+      </div>
+
+      <div>
+        <h3 class="font-bold mb-3">Compliance</h3>
+        <ul class="space-y-2 text-sm text-[var(--crp-muted)]">
+          <li>Licensed (CSLB # Add Here)</li>
+          <li>Fully Insured</li>
+          <li>Workmanship Guarantee</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+      <div class="pt-6 border-t border-white/10 text-center text-xs text-[var(--crp-muted)]">
+        © <span id="year"></span> CRP Construction & Remodeling Professionals. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Mobile CTA -->
+  <div class="fixed bottom-4 left-4 right-4 md:hidden z-40">
+    <a href="#contact" class="block text-center px-6 py-3 rounded-2xl bg-crp text-white font-extrabold shadow-lg bg-crp-hover transition">
+      Request a Free Estimate
+    </a>
   </div>
-</section>
 
-<!-- TRUST STRIP -->
-<section class="bg-gray-900 py-10">
-  <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-6 text-center">
-    <div><p class="text-crp-rosegold font-bold">License #</p><p>CSLB-XXXXXXX</p></div>
-    <div><p class="text-crp-rosegold font-bold">Bonded</p><p>California Compliant</p></div>
-    <div><p class="text-crp-rosegold font-bold">Insured</p><p>Liability & Workers Comp</p></div>
-    <div><p class="text-crp-rosegold font-bold">Permits</p><p>Handled In-House</p></div>
-  </div>
-</section>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 
-<!-- SERVICES -->
-<section id="services" class="subtle-pattern py-24">
-  <h2 class="text-3xl font-bold text-center mb-12">Our Services</h2>
-  <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 px-6">
-    <div class="bg-gray-800 p-8 rounded-3xl card-shadow">Residential Remodeling</div>
-    <div class="bg-gray-800 p-8 rounded-3xl card-shadow">Commercial Construction</div>
-    <div class="bg-gray-800 p-8 rounded-3xl card-shadow">ADUs & Specialized Trades</div>
-  </div>
-</section>
+  <script>
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobileBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    mobileMenu?.querySelectorAll('a')?.forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
-<!-- PROCESS -->
-<section id="process" class="bg-black py-24">
-  <h2 class="text-3xl font-bold text-center mb-16">Our Process</h2>
-  <ol class="max-w-4xl mx-auto border-l-2 border-crp-rosegold pl-8 space-y-8">
-    <li>Consultation & Site Walk</li>
-    <li>Planning & Permits</li>
-    <li>Construction Phase</li>
-    <li>Final Walkthrough</li>
-  </ol>
-</section>
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-<!-- BEFORE & AFTER -->
-<section id="portfolio" class="bg-gray-900 py-24">
-  <h2 class="text-3xl font-bold text-center mb-12">Before & After</h2>
-  <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-6 px-6">
-    <img src="https://placehold.co/600x400/555/fff?text=Before">
-    <img src="https://placehold.co/600x400/C29292/fff?text=After">
-    <img src="https://placehold.co/600x400/1E1E1E/C29292?text=ADU">
-  </div>
-</section>
+    // Swiper init
+    const portfolioSwiper = new Swiper('.portfolioSwiper', {
+      loop: true,
+      autoplay: { delay: 5500, disableOnInteraction: false },
+      slidesPerView: 1,
+      spaceBetween: 24,
+      breakpoints: {
+        640: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 }
+      },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+      pagination: { el: '.swiper-pagination', clickable: true },
+    });
 
-<!-- WARRANTY -->
-<section class="bg-black py-16 text-center">
-  <h3 class="text-2xl font-bold text-crp-rosegold">Workmanship Guarantee</h3>
-  <p class="text-gray-400 mt-4">All work meets California building code standards.</p>
-</section>
+    // Before/After slider
+    document.querySelectorAll('.before-after-container').forEach(container => {
+      const afterLayer = container.querySelector('.after-layer');
+      const handle = container.querySelector('.handle');
+      const circle = container.querySelector('.handle-circle');
+      let isDragging = false;
 
-<!-- GOOGLE REVIEWS -->
-<section class="bg-gray-900 py-24 text-center">
-  <h2 class="text-3xl font-bold mb-8">Client Reviews</h2>
-  <iframe class="mx-auto rounded-xl"
-    src="https://www.google.com/maps/embed?pb=!1m2!1s0x0:0x0"
-    width="600" height="450" loading="lazy"></iframe>
-</section>
+      const setPercent = (percent) => {
+        percent = Math.max(0, Math.min(100, percent));
+        afterLayer.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+        handle.style.left = `${percent}%`;
+        circle.style.left = `${percent}%`;
+      };
 
-<!-- CONTACT -->
-<section id="contact" class="bg-black py-24">
-  <h2 class="text-3xl font-bold text-center mb-10">Request an Estimate</h2>
-  <form class="max-w-3xl mx-auto space-y-6 px-6">
-    <input placeholder="Name" class="w-full p-3 bg-gray-800 rounded-lg">
-    <input placeholder="Email" class="w-full p-3 bg-gray-800 rounded-lg">
-    <textarea placeholder="Project Details" class="w-full p-3 bg-gray-800 rounded-lg"></textarea>
-    <button class="w-full bg-crp-rosegold py-3 rounded-xl">Submit</button>
-  </form>
-</section>
+      const moveHandle = (clientX) => {
+        const rect = container.getBoundingClientRect();
+        const x = clientX - rect.left;
+        const percent = (x / rect.width) * 100;
+        setPercent(percent);
+      };
 
-<!-- FAQ -->
-<section class="bg-gray-900 py-24">
-  <div class="max-w-4xl mx-auto">
-    <h2 class="text-3xl font-bold text-center mb-12">FAQ</h2>
-    <p>Licensed & insured? Yes.</p>
-    <p>Permits handled? Yes.</p>
-    <p>Occupied homes? Yes.</p>
-  </div>
-</section>
+      const onMove = (e) => {
+        if (!isDragging) return;
+        if (e.touches && e.touches.length) moveHandle(e.touches[0].clientX);
+        else moveHandle(e.clientX);
+      };
 
-<!-- FOOTER -->
-<footer class="bg-black py-12 text-center text-gray-400">
-  <p class="text-crp-rosegold text-xl font-bold">CRP Construction & Remodeling</p>
-  <p>Serving California Statewide</p>
-  <p class="text-sm mt-4">&copy; 2025</p>
-</footer>
+      // Start drag anywhere inside (mobile friendly)
+      const onDown = (e) => {
+        isDragging = true;
+        if (e.touches && e.touches.length) moveHandle(e.touches[0].clientX);
+        else moveHandle(e.clientX);
+      };
+
+      const onUp = () => { isDragging = false; };
+
+      container.addEventListener('mousedown', onDown);
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onUp);
+
+      container.addEventListener('touchstart', onDown, { passive: true });
+      container.addEventListener('touchmove', onMove, { passive: true });
+      container.addEventListener('touchend', onUp);
+
+      // Initial position
+      setPercent(50);
+    });
+  </script>
 
 </body>
 </html>
